@@ -1,0 +1,25 @@
+This program run as is will attempt to find the fault that generates a known heatmap.
+
+
+Important variables:
+In "geneticalgorithm/genetic.java"
+	epoch: controls the number of trials that will be run, currently set to 5000
+		Each epoch will take ~5 seconds when run on 4 processors each with 16
+		 cores given 6144MB of memory.
+	N = number of faults checked per eopch, needs to be a power of 2 
+		(or divisible by 4) (currently 64)
+	arraysize: side length of the FEM array. currently 6
+	triangle_number: 2*(arraysize)^2 the number of FEM sections
+	defect_no: controls the number of broken sections of the FEM array.
+			This must be equal to or less than triangle_number
+			Currently 9, goal is for this to be random.
+	dimension: the number of inputs to the finite element calculation's input file
+			This is filled out by a function, all of the inputs can be edited.
+	
+In "geneticalgoirthm/costs.java"
+	real[i]=#
+		Each number is a temperature in the heat array. They are in order from the 
+			top left of the heatmap to the bottom right, read left to right.
+		The heatmap can be calculated for a given defect with the 
+		 HeatTransfer.java method, but that is not seperated here.
+
