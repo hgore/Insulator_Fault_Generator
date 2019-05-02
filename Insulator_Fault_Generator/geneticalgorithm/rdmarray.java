@@ -32,6 +32,8 @@ int temps;
 				temps = s[i][j];
 				s[i][j] = s[randxy][j];
 				s[randxy][j] = temps;
+				
+			//will be worthwile to keep track of this randomness at least for the final epoch. That way I know what has changed between checkfolder/costs/costcheck_* and inputfiles/InputFile_*.txt
 		}
 	}
 }
