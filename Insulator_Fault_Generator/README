@@ -15,15 +15,16 @@ In "geneticalgorithm/genetic.java"
 			Currently 8, goal is for this to be random, and for it to close in on the best number.
 	dimension: the number of inputs to the finite element calculation's input file
 			This is filled out by a function, all of the inputs can be edited.
-	
+			7+arraysize+2+3*defect_no
+			The GA messes with elements 7+arraysize+2+1 through 7+arraysize +2+defect_no
+			
 In "geneticalgoirthm/costs.java"
-	real[i]=#
+	real[nn]=#
 		Each number is a temperature in the heat array. They are in order from the 
 			top left of the heatmap to the bottom right, read left to right.
 		The heatmap can be calculated for a given defect with the 
 		 HeatTransfer.java method, but that is not seperated here.
 		 These define what the genetic algorithm searches for,
 		     so at some point this will become an input file that the program will read and the user will define.
-	V[i] = cost of each heatmap.
+	V[] = cost of each heatmap.
 	     This is the sum of the squares of the differences between the known and generated inputs.
-
