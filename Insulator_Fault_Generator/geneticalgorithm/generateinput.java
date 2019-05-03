@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.lang.Math;
 import java.util.Random;
 public class generateinput{
-void generateinput(int N, int dimension, int arraysize, int triangle_number,int defectnumber,int genin[][]) throws FileNotFoundException
+void generateinput(int N, int dimension, int arraysize, int triangle_number,int defectnumber,int genin[][],int centerofmass) throws FileNotFoundException
 {
 	int xsize = 1;
 	int ysize = 1;
@@ -40,14 +40,13 @@ for(int i=0;i<N;i++)		//this fills out input which is our chromosome
 			for(int k=0;k<defectnumber;k++)		//broken elements 18;33
 			{	input[7+arraysize+2+k] = elements[k]; System.out.print(7+arraysize+1+k + " @@ " + elements[k] + " \n");
 			}*/
-			input[7+arraysize+2] = genin[i][7+arraysize+2];
-			blob.makeblob(input,N,arraysize,defectnumber,triangle_number);
+		for(int L =0;L<centerofmass;L++)
+			input[7+arraysize+2] = genin[i][7+arraysize+2+L];//make this take elements (7+arraysize+2+i) as input
+				//that way we can pick center of mass
+			blob.makeblob(input,N,arraysize,defectnumber,triangle_number,centerofmass);
 //	System.out.print(2*defectnumber);
-			for(int k=(7+arraysize+2+defectnumber);k<(defectnumber);k++) //was k<triangle_no but I'm cleaning "dimension"
-			{//44 and up
+			for(int k=(7+arraysize+2+defectnumber);k<(dimension);k++){ //was k<triangle_no but I'm cleaning "dimension"
 				input[k] = 2;//conductairx;  //(7+arraysize+2+defectnumber)   7+arraysize+2+defectnumber+k
-				input[2*k] = conductairy;//7+arraysize+2+defectnumber+2*k
-				//input[44+k] = 2;
 			}
 	for(int j=0;j<dimension;j++)
 	{genin[i][j] = input[j];	/*System.out.print(genin[i][j] + "\n");*/

@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.lang.Math;
 import java.util.Random;
 public class makeblob {
-	void makeblob(int input[], int n, int arraysize, int defectnumber, int triangle_number)
+	void makeblob(int input[], int n, int arraysize, int defectnumber, int triangle_number, int centerofmass)
 {
 
 //do ... while here to check repeats at end and redo those elements
@@ -15,8 +15,8 @@ Random rand = new Random();
 int choice[] = new int[defectnumber];
 //input[7+arraysize+2] = rand.nextInt(triangle_number)+1;
 //System.out.print("\n" + input[7+arraysize+2] + " input_0 \n");
-	//rand number [1,23)
-		for(int k=1;k<defectnumber;k++){
+	//	so k=centerofmass & center of mass is chosen later? Oh we need to choose which center we start from, k need to be the last element of the center and... actually yeah that should maybe work. Let's give it a wack!
+		for(int k=centerofmass;k<defectnumber;k++){     //I think making k start at the # of centers +1 is what to do.
 					boolean check = false;
 			do{
 				check = false;		
@@ -84,7 +84,6 @@ int choice[] = new int[defectnumber];
 						m = k+2;
 					}
 					else{
-//		System.out.println("\n\n\n\n\n\n\n\n"+"FUCK"+"\n\n\n\n\n\n\n\n");			
 	check = false;
 //						System.out.print(m + "m[" + k + "] " + check + " \n");
 					}

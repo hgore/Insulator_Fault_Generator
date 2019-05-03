@@ -37,33 +37,37 @@ public class genetic {
 		int xy[][] = new int[N][dimension];	//xy[0][0] = x0, and xy[0][1] = y0
 		double costs[] = new double[N];
 		int binaryrep[][][] = new int[N][dimension][bitsize];
+		
+		int maxepoch = 10;
+
 		timestart = System.currentTimeMillis();
 	double newkval = 2; //I am having an issue with i/o in the generateinput() and writeinput() functions, so this replaces the new value that the defect takes. This should be the same for each one anyway so here's a workaround.
     long timeBFi = System.nanoTime();
-Random rand = new Random();
+//Random rand = new Random();
 for(int i=0;i<N;i++){
+	Random rand = new Random();
 	xy[i][7+arraysize+2] = rand.nextInt(triangle_number) +1;
 //	System.out.print(xy[i][7+arraysize+2] + ":element " + i + ":i \n" );
 	}
 
-	genin.generateinput(N,dimension,arraysize,triangle_number,defectnumber,xy);
-PrintWriter checkfirst = new PrintWriter("checkfolder/firstgene/firstgen_");
+	genin.generateinput(N,dimension,arraysize,triangle_number,defectnumber,xy,1);//"0" is the center of mass, which is the bonus positions used in later calculations.
+PrintWriter checkfirst = new PrintWriter("checkfolder/firstgene/firstgen_0");
         for(int i=0;i<N;i++){
-		for(int j=7+arraysize+2;j<defectnumber;j++)
+		for(int j=7+arraysize+2;j<dimension;j++)
 			checkfirst.print(xy[i][j] + "\n");
 	checkfirst.print("\n");
 	}
-checkfirst.flush();
+//checkfirst.flush();
 checkfirst.close();
 	System.out.print(triangle_number + "\n");
 		
-		for(int epoch=0;epoch<1000;epoch++)
+		for(int epoch=0;epoch<maxepoch;epoch++)
 		{
 			long timestartin = System.nanoTime();
 	PrintWriter checkfile = new PrintWriter("checkfolder/genes/checkfile_" + epoch);
 	PrintWriter outfolder = new PrintWriter("checkfolder/costs/costcheck_" + epoch);
-	PrintWriter afterrdm = new PrintWriter("checkfolder/rdm/afterrdm_" + epoch);
-	PrintWriter nordm = new PrintWriter("checkfolder/nordm/checkgene_" + epoch);
+//	PrintWriter afterrdm = new PrintWriter("checkfolder/rdm/afterrdm_" + epoch);
+//	PrintWriter nordm = new PrintWriter("checkfolder/nordm/checkgene_" + epoch);
 	PrintWriter postrdmcost = new PrintWriter("checkfolder/postrdmcosts/rdmcostcheck_" + epoch);
 			acost.cost(N,bitsize,dimension,arraysize,triangle_number,defectnumber,xy,costs, N, epoch,newkval);
         for(int i=0;i<N;i++)
@@ -71,37 +75,45 @@ checkfirst.close();
         outfolder.flush();        
 	outfolder.close();
 			atournament.tournament(N, bitsize, dimension, arraysize, triangle_number, xy,costs);		
-	//		acost.cost(N,bitsize,dimension,arraysize,triangle_number,defectnumber,xy,costs,N/2, epoch,newkval);
-			atournament.tournament(N, bitsize, dimension, arraysize, triangle_number, xy,costs);		
-	//		acost.cost(N,bitsize,dimension,arraysize,triangle_number,defectnumber,xy,costs,N/4, epoch,newkval);	//I need to save the zeroth element, it's getting lost and it should be the best. So I need to keep it and replace it as needed.
-			makeblob blob = new makeblob();
-/*		for(int i=0;i<N/4;i++){
-				for(int j=7+arraysize+1;j<dimension-(2*triangle_number+12-4);j++){
-					nordm.print(xy[i][j] + " ");
-				nordm.print("	");
-					nordm.print(xy[i+N/4][j] + " ");
-				nordm.print("	");
-					nordm.print(xy[i+N/2][j] + " ");
-				nordm.print("	");
-					nordm.print(xy[i+3*N/4][j] + " \n");}
-				nordm.print("	\n");
-				nordm.print("\n");}
-			nordm.flush();
-			nordm.close();
-		System.out.print("nordm_checked\n");
-*/
-/*
-	for(int i=0;i<N/4;i++)
-		outfolder.print(costs[i] + "\n");
-		outfolder.close();*/
-//	System.out.print("cost_checkedn\n");
-//	for(int i = 0; i<N;i++)
+			atournament.tournament(N/2, bitsize, dimension, arraysize, triangle_number, xy,costs);		
+
+
+//newsort xy and costs, replacing tournament.
+/*		int tempxy[] = new int[dimension];
+		double tempcosts;
+//	for(int l=0;l<N;l++){		
+		for(int i=1;i<costs.length;i++){
+			for(int j=i;j>0;j--){
+				for(int k=i;k<dimension;k++)
+					if(costs[j] < costs[j-1]){
+					tempcosts = costs[j];
+                                        tempxy[k] = xy[j][k];
+
+					costs[j] = costs[j-1];
+                                        xy[j][k] = xy[j-1][k];
+
+					costs[j-1] = tempcosts;
+                                        xy[j-1][k] = tempxy[k];
+
+//					tempxy[k] = xy[j][k];
+//					xy[j][k] = xy[j-1][k];
+//					xy[j-1][k] = tempxy[k];
+					}
+				}
+			}*/
+//	}
+//for(int i=0;i<N;i++)
+//System.out.print(costs[i]+"\n");
+
+
+//			makeblob blob = new makeblob();
 //		for(int j=0;j<dimension;j++){
 //			if(xy[i][j]>72 && xy[i][j]<100){
 //			System.out.print(xy[i][j] + "\n");}}
 
 
-			ardmarray.rdmarray(N, bitsize, dimension, binaryrep,xy,0,(N/4));		//makes a random input so it needs to run generateinput
+			ardmarray.rdmarray(N, bitsize, dimension, binaryrep,xy,0,(N/4));
+//			//makes a random input so it needs to run generateinput
 
         for(int i=0;i<N;i++)
                 postrdmcost.print(costs[i] + "\n");
@@ -110,30 +122,10 @@ checkfirst.close();
 
 
 
-/*		for(int i=0;i<N/4;i++){
-			for(int j=7+arraysize+2;j<dimension-(2*triangle_number+12-1);j++){
-				for(int k=0;k<bitsize;k++)
-					afterrdm.print(binaryrep[i][j][k]);
-				afterrdm.print("	");
-				for(int k=0;k<bitsize;k++)
-					afterrdm.print(binaryrep[i+N/4][j][k]);
-				afterrdm.print("	");
-				for(int k=0;k<bitsize;k++)
-					afterrdm.print(binaryrep[i+N/2][j][k]);
-				afterrdm.print("	");
-				for(int k=0;k<bitsize;k++)
-					afterrdm.print(binaryrep[i+3*N/4][j][k]);
-				afterrdm.print("	");
-				afterrdm.print("\n");}
-			afterrdm.print("\n");
-		}
-		System.out.print("rdm_checked\n");
-		afterrdm.flush();
-		afterrdm.close();			
-*/
-			amixing.mixing(N, bitsize, dimension, xy, arraysize, triangle_number);			
-			amutate.mutate(N,dimension,arraysize,triangle_number,defectnumber,bitsize,xy); //gen new rand array
-			arandquarter.randquarter(N, bitsize, dimension, arraysize, triangle_number, defectnumber, xy);
+			amixing.mixing(N, defectnumber, dimension, xy, arraysize, triangle_number,1);			
+			amutate.mutate(N,dimension,arraysize,triangle_number,defectnumber,bitsize,xy,1,epoch,maxepoch);
+					//gen new rand array
+			arandquarter.randquarter(N, bitsize, dimension, arraysize, triangle_number, defectnumber, xy,1);
 
 //	for(int i = 0; i<N;i++)
 //		for(int j=0;j<dimension;j++){
@@ -142,22 +134,6 @@ checkfirst.close();
 
 
 
-/*		for(int i=0;i<N/4;i++){
-				for(int j=7+arraysize+1;j<dimension-(2*triangle_number+12-4);j++){
-					checkfile.print(xy[i][j] + " ");
-				checkfile.print("	");
-					checkfile.print(xy[i+N/4][j] + " ");
-				checkfile.print("	");
-					checkfile.print(xy[i+N/2][j] + " ");
-				checkfile.print("	");
-					checkfile.print(xy[i+3*N/4][j] + " \n");}
-				checkfile.print("	\n");
-				checkfile.print("\n");
-			}
-		System.out.print("chromosome_checked\n");
-		checkfile.flush();
-		checkfile.close();
-*/
 			long timeendin = System.nanoTime();
 			double epochtime = (double) ( timeendin - timestartin ) / 1000000000;
 	System.out.printf("	\n");
@@ -202,8 +178,11 @@ for(int i=0;i<(Math.log(N)/Math.log(2));i++)
 	atournament.tournament(N, bitsize, dimension, arraysize, triangle_number, xy, costs);
 	acost.cost(N,bitsize,dimension,arraysize,triangle_number,defectnumber,xy,costs,N/(i+1), (9992+i),newkval);
 PrintWriter enddata = new PrintWriter("endgene_" + i);
-for(int j=0;j<(dimension-2*defectnumber);j++)
-	enddata.print(xy[i][j] + "\n");
+for(int j=0;j<N;j++){
+	enddata.print(costs[j] +"\n");
+	for(int k=0;k<dimension;k++)
+	enddata.print(xy[j][k] + "\n");
+	}
 enddata.flush();
 enddata.close();
 	long lastmintimeendin = System.nanoTime();
