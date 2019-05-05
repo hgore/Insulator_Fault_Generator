@@ -38,7 +38,7 @@ public class genetic {
 		double costs[] = new double[N];
 		int binaryrep[][][] = new int[N][dimension][bitsize];
 		
-		int maxepoch = 10;
+		int maxepoch = 2000;
 
 		timestart = System.currentTimeMillis();
 	double newkval = 2; //I am having an issue with i/o in the generateinput() and writeinput() functions, so this replaces the new value that the defect takes. This should be the same for each one anyway so here's a workaround.
@@ -69,11 +69,21 @@ checkfirst.close();
 //	PrintWriter afterrdm = new PrintWriter("checkfolder/rdm/afterrdm_" + epoch);
 //	PrintWriter nordm = new PrintWriter("checkfolder/nordm/checkgene_" + epoch);
 	PrintWriter postrdmcost = new PrintWriter("checkfolder/postrdmcosts/rdmcostcheck_" + epoch);
+	PrintWriter outinput = new PrintWriter("checkfolder/inputs/allinputs_" + epoch);
 			acost.cost(N,bitsize,dimension,arraysize,triangle_number,defectnumber,xy,costs, N, epoch,newkval);
         for(int i=0;i<N;i++)
-                outfolder.print(costs[i] + "\n");
+                outfolder.print("cost[" + i + "] =  " + costs[i] + "\n");
         outfolder.flush();        
 	outfolder.close();
+
+	for(int i=0;i<N;i++){
+		for(int j=0;j<defectnumber;j++){
+			outinput.print(xy[i][7+arraysize+2+j] + "  ");//these will correspond directly with the costs in outfolder
+		}
+	outinput.print("\n input: " + i + "\n");
+	}
+	outinput.flush();
+	outinput.close();
 			atournament.tournament(N, bitsize, dimension, arraysize, triangle_number, xy,costs);		
 			atournament.tournament(N/2, bitsize, dimension, arraysize, triangle_number, xy,costs);		
 
@@ -200,6 +210,7 @@ enddata.close();
 
 			System.out.printf("	\n\n");
 	System.out.printf("\n	%.10f", costs[0]);
+	System.out.print("last cost:	" + costs[0]);
 PrintWriter lastcost = new PrintWriter("LASTCOST");
 lastcost.printf("%.10f",costs[0]);
 lastcost.flush();
