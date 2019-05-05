@@ -25,7 +25,7 @@ void randquarter(int N, int bitsize, int dimension, int arraysize, int triangle_
 //		System.out.print(randelementsquarter[i][7+arraysize+2] + "\n");	
 		Random rand = new Random();
 		randelementsquarter[i][7+arraysize+2] = (rand.nextInt(triangle_number) +1);
-		System.out.print("\n"+randelementsquarter[i][7+arraysize+2]+"\n");
+//		System.out.print("\n"+randelementsquarter[i][7+arraysize+2]+"\n");
 //		for(int j=0;j<dimension;j++)i
 //		System.out.print(randelementsquarter[i][7+arraysize+2] + "\n");
 	}
