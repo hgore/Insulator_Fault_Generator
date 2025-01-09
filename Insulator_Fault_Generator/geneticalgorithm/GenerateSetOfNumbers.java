@@ -1,10 +1,4 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
 import java.util.Random;
 public class GenerateSetOfNumbers {
 	void GenerateSetOfNumbers(int arr[], int n, int triangle_number)

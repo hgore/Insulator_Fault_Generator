@@ -1,10 +1,4 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
 
 public class LUDecomp {
   double LUDecomp(int N, double M[][], int mi, int mj, int side) {

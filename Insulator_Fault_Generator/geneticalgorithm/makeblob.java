@@ -1,10 +1,4 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
 import java.util.Random;
 public class makeblob {
 	void makeblob(int input[], int n, int arraysize, int defectnumber, int triangle_number, int centerofmass)

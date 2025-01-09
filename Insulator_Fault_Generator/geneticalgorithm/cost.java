@@ -1,14 +1,7 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.lang.Math;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.RecursiveTask;
-import java.lang.Thread;
-import java.util.concurrent.ExecutorService;
+
 
 public class cost {
 void cost(int N, int bitsize, int dimension,int arraysize, int triangle_number,int defectnumber, int ind[][], double V[], int elementscalc, int epoch, double newkval) throws FileNotFoundException, InterruptedException	//is being evaluated on the interval [-1,1]
@@ -25,7 +18,7 @@ for(int i=0; i<N; i++)
 	double tempstore[][] = new double[N][nn];
 	double real[] = new double[nn];
 	double tempsum[] = new double[N];
-	double realsum = 0;
+	//double realsum = 0;
 	/*realbreak realdata = new realbreak();
 	realdata.realbreak(N,dimension,arraysize,triangle_number,defectnumber,real);
 	//this fills out real, which is just somethine to input into the fea code
@@ -83,7 +76,7 @@ for(int i=0; i<N; i++)
         real[47] = 24.897456229772153;
         real[48] = 10.0;
 */
-
+//dude just use an input file whata are you doing?
 real[0] = 94.2162119313418;
 real[1] = 79.42641745071424;
 real[2] = 65.06954921701514;

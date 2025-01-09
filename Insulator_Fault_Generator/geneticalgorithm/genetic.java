@@ -1,24 +1,20 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.lang.Math;
-import java.io.PrintStream;
 import java.util.Random;
-import java.util.concurrent.ExecutorService;
+
 public class genetic {
 	public static void main(String argv[]) throws FileNotFoundException, InterruptedException
 	{
 		 cost acost = new cost();	//takes in an independant and dependant variable and calculates the dependant variable
 		 tournament atournament = new tournament();	//pairwise comparison to find smallest elements of a[] with respect to c[]
-		 convertbinary aconvertbinary = new convertbinary(); //takes in the sorted array of ind. vars. and converts them into a binary matrix
+		 //convertbinary aconvertbinary = new convertbinary(); //takes in the sorted array of ind. vars. and converts them into a binary matrix
 		 rdmarray ardmarray = new rdmarray(); //randomizes the elements of y[][] and s[] the same way, and only the array elements between miny and maxy (ie elements 3-7, or 0-N)
 		 mixing amixing = new mixing(); //Generates cildren of the first quarter elements, which were the best of the system.
 		 mutate amutate = new mutate();	//swaps the first half of binarry's binary number with the second half of the next element's and vice versa. Creates the 3rd quarter of new imputs.
 		 randquarter arandquarter = new randquarter();	//makes the 4th quarter of your new imputs random so that you always check the whole domain and don't get trapped in a local minimum.
-		 debinary adebinary = new debinary();	//converts the binary array to a decimal array.
+		 //debinary adebinary = new debinary();	//converts the binary array to a decimal array.
 	generateinput genin = new generateinput();
 	writeinput writein = new writeinput();
 	    PrintWriter allcosts = new PrintWriter("allcosts");
@@ -64,7 +60,7 @@ checkfirst.close();
 		for(int epoch=0;epoch<maxepoch;epoch++)
 		{
 			long timestartin = System.nanoTime();
-	PrintWriter checkfile = new PrintWriter("checkfolder/genes/checkfile_" + epoch);
+	//PrintWriter checkfile = new PrintWriter("checkfolder/genes/checkfile_" + epoch);
 	PrintWriter outfolder = new PrintWriter("checkfolder/costs/costcheck_" + epoch);
 //	PrintWriter afterrdm = new PrintWriter("checkfolder/rdm/afterrdm_" + epoch);
 //	PrintWriter nordm = new PrintWriter("checkfolder/nordm/checkgene_" + epoch);

@@ -1,11 +1,6 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
-import java.util.Random;
 public class writeinput{
 void writeinput(int N, int dimension, int arraysize, int triangle_number,int defectnumber, int input[][], int i) throws FileNotFoundException
 {
