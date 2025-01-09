@@ -1,10 +1,4 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
 import java.util.Random;
 
 public class rdmarray{
@@ -13,7 +7,7 @@ void rdmarray(int N, int bitsize, int dimension, int binry[][][],int s[][], int 
 //Random random = new Random();
 //	double randomNumber = random.nextDouble(1+1-N/4)+N/4;
 //uniform_int_distribution<int> randomr(0,((N/4)-1));
-int temp;
+//int temp;
 int randxy;
 int temps;
 	Random random = new Random();

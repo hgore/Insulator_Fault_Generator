@@ -1,16 +1,11 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
 import java.util.Random;
 public class randquarter{
 void randquarter(int N, int bitsize, int dimension, int arraysize, int triangle_number, int defectnumber, int binar[][],int centerofmass) throws FileNotFoundException
 {
 	generateinput genin = new generateinput();
-	convertbinary aconvertbinary = new convertbinary();
+	//convertbinary aconvertbinary = new convertbinary();
 	int randelementsquarter[][] = new int[N/4][dimension];
 //initiate this to zero	
 //for(int i=0;i<N/4;i++)

@@ -1,5 +1,5 @@
 package geneticalgorithm;
-import java.lang.*;
+//import java.lang.*;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
@@ -8,16 +8,16 @@ import java.lang.Math;
 
 public class HeatTransfer {
   public void HeatTransfer(double temper[][], int elementscalc,double newkval) throws FileNotFoundException {
-    PrintWriter outvector = new PrintWriter("outputfiles/outputfile_" + elementscalc + ".txt"); //hunter
+    //PrintWriter outvector = new PrintWriter("outputfiles/outputfile_" + elementscalc + ".txt"); //hunter
     File inputFile = new File("inputfiles/InputFile_" + elementscalc + ".txt");
     Scanner input = new Scanner(inputFile);
-    Scanner fileInput = new Scanner(System.in);
+    //Scanner fileInput = new Scanner(System.in);
 //    System.out.println("Name of output file to be generated: ");
     String fileName = "auto";// fileInput.next();
     PrintWriter outputFile = new PrintWriter(fileName + ".csv");
     BoundaryFlux flux = new BoundaryFlux();
     StiffnessMatrix smatrix = new StiffnessMatrix();
-    long timeInitial = System.nanoTime();
+    //long timeInitial = System.nanoTime();
 
     int N = (int) input.nextInt();
     int n = ( N + 1 ) * ( N + 1 );
@@ -76,7 +76,7 @@ public class HeatTransfer {
         K_val[i][1] = k_yy;
       }
     }
-
+    input.close();
     //--------------------------------------------------------------------------
     //Boundary temperature vector
     int Tnd = 0;
@@ -88,12 +88,12 @@ public class HeatTransfer {
 
     //--------------------------------------------------------------------------
     //Boundary flux vector
-    long timeBFi = System.nanoTime();
+    //long timeBFi = System.nanoTime();
     for (int i = 0; i < nn; ++i) {
       fb[i] = flux.BoundaryFlux(N, t, x_size, y_size, numEle, k_xx, k_yy, K_list, K_val, Tb, i);
     }
-    long timeBFf = System.nanoTime();
-    double boundaryFluxTime = (double) ( timeBFf - timeBFi ) / 1000000000;
+    //long timeBFf = System.nanoTime();
+    //double boundaryFluxTime = (double) ( timeBFf - timeBFi ) / 1000000000;
 
     //--------------------------------------------------------------------------
     //Flux vector expanded for full mesh
@@ -109,15 +109,15 @@ public class HeatTransfer {
 
     //--------------------------------------------------------------------------
     //Stiffness matrix and LU matrices
-    long timeMatrixi = System.nanoTime();
-    long stiffnessi = System.nanoTime();
+    /*long timeMatrixi = System.nanoTime();
+    long stiffnessi = System.nanoTime();*/
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < n; ++j) {
         M[i][j] = smatrix.StiffnessMatrix(N, t, x_size, y_size, numEle, k_xx, k_yy, K_list, K_val, i, j);
       }
     }
-    long stiffnessf = System.nanoTime();
-    long lui = System.nanoTime();
+    /*long stiffnessf = System.nanoTime();
+    long lui = System.nanoTime();*/
 
     for (int j = 0; j < count; ++j) {
       U[0][j] = M[0][j];
@@ -163,11 +163,11 @@ public class HeatTransfer {
       }
     }
 
-    long luf = System.nanoTime();
+    /*long luf = System.nanoTime();
     long timeMatrixf = System.nanoTime();
     double matrixTime = (double) ( timeMatrixf - timeMatrixi ) / 1000000000;
     double stiffnessTime = (double) ( stiffnessf - stiffnessi ) / 1000000000;
-    double luTime = (double) ( luf - lui ) / 1000000000;
+    double luTime = (double) ( luf - lui ) / 1000000000;*/
     //--------------------------------------------------------------------------
     //Calculating Y vector for LU
     Y[0] = f[0];
@@ -239,8 +239,8 @@ public class HeatTransfer {
 	  
  //End Hunter
 	  
-    long timeFinal = System.nanoTime();
-    double genTime = (double) ( timeFinal - timeInitial ) / 1000000000;
+    //long timeFinal = System.nanoTime();
+    //double genTime = (double) ( timeFinal - timeInitial ) / 1000000000;
 /*    System.out.println("Boundary matrix generated in " + boundaryFluxTime + " seconds");
     System.out.println("Stiffness matrix and LU generated in " + matrixTime + " seconds");
     System.out.println("Stiffness matrix generated in " + stiffnessTime + " seconds");

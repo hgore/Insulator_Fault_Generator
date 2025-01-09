@@ -1,10 +1,5 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
 import java.util.Random;
 public class mutate{
 void mutate(int N,int dimension, int arraysize, int triangle_number, int defectnumber, int bitsize,int chromo[][],int centerofmass,int epoch,int maxepoch) throws FileNotFoundException

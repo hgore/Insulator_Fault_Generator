@@ -1,9 +1,4 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.lang.Math;
 public class convertbinary{
 void convertbinary(int N, int bitsize,  int arraysize, int dimension,int triangle_number, int sortedind[][], int binaryno[][][],int n) //converts a decimal in (0,1) to binary w/ 16 digit accuracy

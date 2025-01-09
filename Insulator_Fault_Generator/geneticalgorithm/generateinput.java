@@ -1,11 +1,5 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
-import java.util.Random;
 public class generateinput{
 void generateinput(int N, int dimension, int arraysize, int triangle_number,int defectnumber,int genin[][],int centerofmass) throws FileNotFoundException
 {
@@ -20,8 +14,8 @@ void generateinput(int N, int dimension, int arraysize, int triangle_number,int 
 	int elements[] = new int[defectnumber];	//we can't repeat these numbers. So let's use a random shuffle to generate thiese numbers. These again are coming out of the genetic algorithm, so just be sure the GE doesn't repeat entries in the array.
 	GenerateSetOfNumbers generator = new GenerateSetOfNumbers();
 	makeblob blob = new makeblob();
-	int conductairx = 2;
-	int conductairy = 2;
+	//int conductairx = 2;
+	//int conductairy = 2;
 	int input[] = new int[dimension];
 for(int i=0;i<N;i++)		//this fills out input which is our chromosome
 {

@@ -1,10 +1,4 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
 
 public class StiffnessMatrix {
   double StiffnessMatrix(int N, double t, double x_size, double y_size, int numEle, double k_xx, double k_yy, int K_list[], double K_val[][], int mi, int mj) {

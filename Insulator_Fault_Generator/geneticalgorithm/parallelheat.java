@@ -1,19 +1,7 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.RecursiveTask;
 import java.lang.Thread;
-import java.util.concurrent.ExecutorService;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+
 public class parallelheat {	
 public void parallelheat(int N, int elementscalc, double temper[][], double tempstore[][], int nn, int epoch, double newkval) throws FileNotFoundException, InterruptedException
 {

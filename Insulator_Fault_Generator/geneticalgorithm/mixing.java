@@ -1,10 +1,5 @@
 package geneticalgorithm;
-import java.lang.*;
-import java.io.File;
-import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.lang.Math;
 public class mixing{    //Generates cildren of the first quarter elements, which were the best of the system.
 void mixing(int N, int defectnumber, int dimension, int chromo[][], int arraysize, int triangle_number,int centerofmass) throws FileNotFoundException
 {
